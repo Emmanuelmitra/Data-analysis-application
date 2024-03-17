@@ -162,7 +162,7 @@ def handle_categorical_data(df):
             encoded_data = onehot_encoder.fit_transform(df[[column]]).toarray()
             
             # Construct feature names manually
-            feature_names = onehot_encoder.get_feature_names_out([column])
+            feature_names = [f"{column}_{i}" for i in range(encoded_data.shape[1])]
             encoded_data = pd.DataFrame(encoded_data, columns=feature_names)
             
             df_encoded = pd.concat([df_encoded, encoded_data], axis=1)
@@ -174,6 +174,7 @@ def handle_categorical_data(df):
 
     st.success("Categorical Data Handling Completed.")
     return df_encoded
+
 
 
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
