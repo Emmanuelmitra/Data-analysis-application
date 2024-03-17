@@ -159,7 +159,12 @@ def handle_categorical_data(df):
         if unique_values_count > 10:
             st.info(f"Applying One-Hot Encoding to '{column}' (nominal data).")
             onehot_encoder = OneHotEncoder(drop='first')
-            encoded_data = pd.DataFrame(onehot_encoder.fit_transform(df[[column]]).toarray(), columns=onehot_encoder.get_feature_names_out([column]))
+            encoded_data = onehot_encoder.fit_transform(df[[column]]).toarray()
+            
+            # Construct feature names manually
+            feature_names = [f"{column}_{value}" for value in onehot_encoder.categories_[0]]
+            encoded_data = pd.DataFrame(encoded_data, columns=feature_names)
+            
             df_encoded = pd.concat([df_encoded, encoded_data], axis=1)
             df_encoded = df_encoded.drop(column, axis=1)  # Drop original categorical column
         else:
