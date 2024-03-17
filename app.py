@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit as st
 # Increase message size limit
-st.set_option('server.maxMessageSize', 500)  # Set to desired limit in MB
+st.set_max_request_size(500) 
 
 import pandas as pd
 import seaborn as sns
