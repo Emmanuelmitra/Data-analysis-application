@@ -2,4 +2,5 @@ streamlit
 python-dotenv
 pandas
 seaborn
+scikit-learn==0.24.2
 
