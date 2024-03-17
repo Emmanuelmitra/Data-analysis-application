@@ -10,7 +10,6 @@ from sklearn.impute import SimpleImputer
 from scipy.stats import shapiro
 import base64  # Added base64 for encoding
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
-
 # Custom color values
 custom_background_color = "#f0f0f0"
 custom_primary_color = "#ff5733"  # Orange
