@@ -1,8 +1,5 @@
 import streamlit as st
 import streamlit as st
-# Increase message size limit
-st.set_max_request_size(500) 
-
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -13,6 +10,8 @@ from sklearn.impute import SimpleImputer
 from scipy.stats import shapiro
 import base64  # Added base64 for encoding
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+
+st.set_option('server.maxMessageSize', 500)  # Set to desired limit in MB
 
 # Custom color values
 custom_background_color = "#f0f0f0"
