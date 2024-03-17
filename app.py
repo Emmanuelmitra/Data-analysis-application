@@ -162,7 +162,7 @@ def handle_categorical_data(df):
             encoded_data = onehot_encoder.fit_transform(df[[column]]).toarray()
             
             # Construct feature names manually
-            feature_names = [f"{column}_{value}" for value in onehot_encoder.categories_[0]]
+            feature_names = onehot_encoder.get_feature_names_out([column])
             encoded_data = pd.DataFrame(encoded_data, columns=feature_names)
             
             df_encoded = pd.concat([df_encoded, encoded_data], axis=1)
